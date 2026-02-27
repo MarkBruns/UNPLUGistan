@@ -171,6 +171,7 @@ export const ApiV1SkillListResponseSchema = type({
       version: 'string',
       createdAt: 'number',
       changelog: 'string',
+      capabilities: SkillCapabilitySchema.array().optional(),
     }).optional(),
   }).array(),
   nextCursor: 'string|null',
@@ -190,6 +191,7 @@ export const ApiV1SkillResponseSchema = type({
     version: 'string',
     createdAt: 'number',
     changelog: 'string',
+    capabilities: SkillCapabilitySchema.array().optional(),
   }).or('null'),
   owner: type({
     handle: 'string|null',
@@ -295,6 +297,9 @@ export const ClawdisRequiresSchema = type({
 })
 export type ClawdisRequires = (typeof ClawdisRequiresSchema)[inferred]
 
+export const SkillCapabilitySchema = type('"shell"|"filesystem"|"network"|"browser"|"sessions"')
+export type SkillCapability = (typeof SkillCapabilitySchema)[inferred]
+
 export const EnvVarDeclarationSchema = type({
   name: 'string',
   required: 'boolean?',
@@ -335,5 +340,6 @@ export const ClawdisSkillMetadataSchema = type({
   dependencies: DependencyDeclarationSchema.array().optional(),
   author: 'string?',
   links: SkillLinksSchema.optional(),
+  capabilities: SkillCapabilitySchema.array().optional(),
 })
 export type ClawdisSkillMetadata = (typeof ClawdisSkillMetadataSchema)[inferred]
