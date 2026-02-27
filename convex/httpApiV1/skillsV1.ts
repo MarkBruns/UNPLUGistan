@@ -45,7 +45,13 @@ type ListSkillsResult = {
       version: string
       createdAt: number
       changelog: string
-      parsed?: { clawdis?: { os?: string[]; nix?: { plugin?: boolean; systems?: string[] } } }
+      parsed?: {
+        clawdis?: {
+          os?: string[]
+          nix?: { plugin?: boolean; systems?: string[] }
+          capabilities?: string[]
+        }
+      }
     } | null
   }>
   nextCursor: string | null
