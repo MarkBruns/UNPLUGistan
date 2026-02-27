@@ -171,7 +171,7 @@ export const ApiV1SkillListResponseSchema = type({
       version: 'string',
       createdAt: 'number',
       changelog: 'string',
-      capabilities: SkillCapabilitySchema.array().optional(),
+      capabilities: '("shell"|"filesystem"|"network"|"browser"|"sessions")[]?',
     }).optional(),
   }).array(),
   nextCursor: 'string|null',
@@ -191,7 +191,7 @@ export const ApiV1SkillResponseSchema = type({
     version: 'string',
     createdAt: 'number',
     changelog: 'string',
-    capabilities: SkillCapabilitySchema.array().optional(),
+    capabilities: '("shell"|"filesystem"|"network"|"browser"|"sessions")[]?',
   }).or('null'),
   owner: type({
     handle: 'string|null',
