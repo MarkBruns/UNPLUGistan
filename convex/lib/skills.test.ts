@@ -69,6 +69,36 @@ describe('skills utils', () => {
     expect(clawdis?.capabilities).toEqual(['shell', 'network'])
   })
 
+  it('normalizes alias capability names and new canonical values', () => {
+    const frontmatter = parseFrontmatter(
+      `---\nmetadata: {"clawdis":{"capabilities":["terminal","web_fetch","subagent","cron","message"]}}\n---\nBody`,
+    )
+    const clawdis = parseClawdisMetadata(frontmatter)
+    expect(clawdis?.capabilities).toEqual([
+      'shell',
+      'network',
+      'sessions',
+      'scheduling',
+      'messaging',
+    ])
+  })
+
+  it('accepts object-style capabilities with inline constraints', () => {
+    const frontmatter = parseFrontmatter(`---
+metadata:
+  clawdis:
+    capabilities:
+      shell:
+        mode: restricted
+        allow: [git, gh]
+      network:
+        web_search: true
+        web_fetch: true
+---`)
+    const clawdis = parseClawdisMetadata(frontmatter)
+    expect(clawdis?.capabilities).toEqual(['shell', 'network'])
+  })
+
   it('ignores invalid clawdis metadata', () => {
     const frontmatter = parseFrontmatter(`---\nmetadata: not-json\n---\nBody`)
     expect(parseClawdisMetadata(frontmatter)).toBeUndefined()
