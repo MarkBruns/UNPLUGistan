@@ -2,7 +2,7 @@
   <img src="public/clawd-logo.png" alt="ClawHub" width="120">
 </p>
 
-<h1 align="center">ClawHub</h1>
+<h2 align="center">ClawHub</h2>
 
 <p align="center">
   <a href="https://github.com/openclaw/clawhub/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/openclaw/clawhub/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
@@ -24,177 +24,163 @@ onlycrabs.ai is the **SOUL.md registry**: publish and share system lore the same
   <a href="https://discord.gg/clawd">Discord</a>
 </p>
 
-## What you can do with it
-
-- Browse skills + render their `SKILL.md`.
-- Publish new skill versions with changelogs + tags (including `latest`).
-- Browse souls + render their `SOUL.md`.
-- Publish new soul versions with changelogs + tags.
-- Search via embeddings (vector index) instead of brittle keywords.
-- Star + comment; admins/mods can curate and approve skills.
-
-## onlycrabs.ai (SOUL.md registry)
-
-- Entry point is host-based: `onlycrabs.ai`.
-- On the onlycrabs.ai host, the home page and nav default to souls.
-- On ClawHub, souls live under `/souls`.
-- Soul bundles only accept `SOUL.md` for now (no extra files).
-
-## How it works (high level)
-
-- Web app: TanStack Start (React, Vite/Nitro).
-- Backend: Convex (DB + file storage + HTTP actions) + Convex Auth (GitHub OAuth).
-- Search: OpenAI embeddings (`text-embedding-3-small`) + Convex vector search.
-- API schema + routes: `packages/schema` (`clawhub-schema`).
-
-## CLI
-
-Common CLI flows:
-
-- Auth: `clawhub login`, `clawhub whoami`
-- Discover: `clawhub search ...`, `clawhub explore`
-- Manage local installs: `clawhub install <slug>`, `clawhub uninstall <slug>`, `clawhub list`, `clawhub update --all`
-- Inspect without installing: `clawhub inspect <slug>`
-- Publish/sync: `clawhub publish <path>`, `clawhub sync`
-
-Docs: [`docs/quickstart.md`](docs/quickstart.md), [`docs/cli.md`](docs/cli.md).
-
-### Removal permissions
-
-- `clawhub uninstall <slug>` only removes a local install on your machine.
-- Uploaded registry skills use soft-delete/restore (`clawhub delete <slug>` / `clawhub undelete <slug>` or API equivalents).
-- Soft-delete/restore is allowed for the skill owner, moderators, and admins.
-- Hard delete is admin-only (management tools / ban flows).
-
-
-## Telemetry
-
-ClawHub tracks minimal **install telemetry** (to compute install counts) when you run `clawhub sync` while logged in.
-Disable via:
-
-```bash
-export CLAWHUB_DISABLE_TELEMETRY=1
-```
-
-Details: [`docs/telemetry.md`](docs/telemetry.md).
-
-## Repo layout
-
-- `src/` — TanStack Start app (routes, components, styles).
-- `convex/` — schema + queries/mutations/actions + HTTP API routes.
-- `packages/schema/` — shared API types/routes for the CLI and app.
-- [`docs/`](docs/README.md) — project documentation (architecture, CLI, auth, deployment, and more).
-- [`docs/spec.md`](docs/spec.md) — product + implementation spec (good first read).
-
-## Local dev
-
-Prereqs: [Bun](https://bun.sh/) (Convex runs via `bunx`, no global install needed).
-
-```bash
-bun install
-cp .env.local.example .env.local
-# edit .env.local — see CONTRIBUTING.md for local Convex values
-
-# terminal A: local Convex backend
-bunx convex dev
-
-# terminal B: web app (port 3000)
-bun run dev
-
-# seed sample data
-bunx convex run --no-push devSeed:seedNixSkills
-```
-
-For full setup instructions (env vars, GitHub OAuth, JWT keys, database seeding), see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Environment
-
-- `VITE_CONVEX_URL`: Convex deployment URL (`https://<deployment>.convex.cloud`).
-- `VITE_CONVEX_SITE_URL`: Convex site URL (`https://<deployment>.convex.site`).
-- `VITE_SOULHUB_SITE_URL`: onlycrabs.ai site URL (`https://onlycrabs.ai`).
-- `VITE_SOULHUB_HOST`: onlycrabs.ai host match (`onlycrabs.ai`).
-- `VITE_SITE_MODE`: Optional override (`skills` or `souls`) for SSR builds.
-- `CONVEX_SITE_URL`: same as `VITE_CONVEX_SITE_URL` (auth + cookies).
-- `SITE_URL`: App URL (local: `http://localhost:3000`).
-- `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET`: GitHub OAuth App.
-- `JWT_PRIVATE_KEY` / `JWKS`: Convex Auth keys.
-- `OPENAI_API_KEY`: embeddings for search + indexing.
-
-## Nix plugins (nixmode skills)
-
-ClawHub can store a nix-clawdbot plugin pointer in SKILL frontmatter so the registry knows which
-Nix package bundle to install. A nix plugin is different from a regular skill pack: it bundles the
-skill pack, the CLI binary, and its config flags/requirements together.
-
-Add this to `SKILL.md`:
-
-```yaml
 ---
-name: peekaboo
-description: Capture and automate macOS UI with the Peekaboo CLI.
-metadata: {"clawdbot":{"nix":{"plugin":"github:clawdbot/nix-steipete-tools?dir=tools/peekaboo","systems":["aarch64-darwin"]}}}
----
-```
 
-Install via nix-clawdbot:
+<h1 align="center">UNPLUGistan</h1>
 
-```nix
-programs.clawdbot.plugins = [
-  { source = "github:clawdbot/nix-steipete-tools?dir=tools/peekaboo"; }
-];
-```
+***Fork it!*** *UNPLUGistan is living collection of awesome-esque agentic tools ... make your UNPLUGistan your own.*
 
-You can also declare config requirements + an example snippet:
+**First things todo in <5 minutes**:
+- Star/fork the 10 most critical repos (OpenClaw, k3s, Talos, ROS2, Firecracker, Cilium, Argo CD, Knative, Kaniko, Distroless).
+- Clone your new UNPLUGistan repo LOCALLY.
+- Start with the official OpenClaw + k3s one-click install guide in the community (link in repo).
+- *(Optional but recommended -- this could be done later) Add folders per your interests; possible suggestions: `/infrastructure/` (for your k8s yamls), `/openclaw-skills/` (your Git templates), `/ros2-nodes/` (robot integrations), `/docs/`. Turn key repos into Git submodules later.*
 
-```yaml
----
-name: padel
-description: Check padel court availability and manage bookings via Playtomic.
-metadata: {"clawdbot":{"config":{"requiredEnv":["PADEL_AUTH_FILE"],"stateDirs":[".config/padel"],"example":"config = { env = { PADEL_AUTH_FILE = \\\"/run/agenix/padel-auth\\\"; }; };"}}}
----
-```
+This stack is deliberately over-provisioned with redundancy so you can pick the absolute minimal subset (Talos + k3s + OpenClaw + ROS2 + Distroless + Firecracker) ... and work toward the ideall of *literally* never think about compute again. You chat → agents do → everything dies → you live in 
 
-To show CLI help (recommended for nix plugins), include the `cli --help` output:
+### 100 Essential Elements of UNPLUG-istan
+Organized by layer; not priority. Each entry = exactly two sentences (why it matters + how it connects) + official learning URL.
 
-```yaml
----
-name: padel
-description: Check padel court availability and manage bookings via Playtomic.
-metadata: {"clawdbot":{"cliHelp":"padel --help\\nUsage: padel [command]\\n"}}
----
-```
+**1-10: Base OS & Kernel (the invisible host)**
+1. **Linux Kernel**  
+   It is the absolute minimal, auditable foundation that lets every container and pod die instantly without residue. It connects directly to Docker/k8s/ROS2 by exposing hardware and namespaces so OpenClaw agents can spin robotic swarms or ephemeral tasks without you ever touching a terminal.  
+   https://github.com/torvalds/linux
 
-`metadata.clawdbot` is preferred, but `metadata.clawdis` and `metadata.openclaw` are accepted as aliases.
+2. **Alpine Linux**  
+   The smallest production-grade distro (5 MB) for k8s nodes, guaranteeing your entire cluster boots in seconds and consumes almost no resources. It feeds minimalist Docker images and k3s so OpenClaw’s agentic pods stay hyper-constrained and ephemeral.  
+   https://alpinelinux.org (mirror: https://github.com/alpinelinux/docker-alpine)
 
-## Skill metadata
+3. **Talos Linux**  
+   Immutable, API-driven OS built exclusively for Kubernetes — no SSH, no package manager, zero maintenance ever. It turns your bare metal or cloud into a set-and-forget k8s host that OpenClaw and ROS2 pods talk to directly.  
+   https://github.com/siderolabs/talos
 
-Skills declare their runtime requirements (env vars, binaries, install specs) in the `SKILL.md` frontmatter. ClawHub's security analysis checks these declarations against actual skill behavior.
+4. **Fedora CoreOS**  
+   Automatic atomic updates with zero downtime; the safest base when you occasionally need desktop debugging. It layers under k8s so OpenClaw agents can reboot nodes invisibly.  
+   https://github.com/coreos/fedora-coreos-tracker
 
-Full reference: [`docs/skill-format.md`](docs/skill-format.md#frontmatter-metadata)
+5. **NixOS**  
+   Fully declarative configuration — one file defines the entire OS and all dependencies, eliminating “works on my machine” forever. It connects to every IaC tool so your UNPLUG-istan repo becomes the single source of truth.  
+   https://github.com/NixOS/nix
 
-Quick example:
+6. **k3s**  
+   Lightweight certified Kubernetes (single binary, 100 MB) that runs on anything from Raspberry Pi to cloud VPS and scales to zero cost when idle. It is the orchestration backbone that OpenClaw skills and ROS2 nodes use to launch temporary pods.  
+   https://github.com/k3s-io/k3s
 
-```yaml
----
-name: my-skill
-description: Does a thing with an API.
-metadata:
-  openclaw:
-    requires:
-      env:
-        - MY_API_KEY
-      bins:
-        - curl
-    primaryEnv: MY_API_KEY
----
-```
+7. **k0s**  
+   Zero-dependency Kubernetes distribution with built-in air-gap support for ultra-secure or robotic edge deployments. It pairs with k3s for hybrid cloud + on-robot swarms that OpenClaw can orchestrate ephemerally.  
+   https://github.com/k0sproject/k0s
 
-## Scripts
+8. **Flatcar Container Linux**  
+   Automatic updates with rollback; the most reliable long-running base for any node that occasionally hosts persistent OpenClaw memory.  
+   https://github.com/flatcar/Flatcar
 
-```bash
-bun run dev
-bun run build
-bun run test
-bun run coverage
-bun run lint
-```
+9. **Bottlerocket**  
+   AWS-designed minimal OS with only the container runtime — no shell, no package manager, attack surface near zero. It hosts the supervisor pod that OpenClaw uses to spawn temporary task pods.  
+   https://github.com/bottlerocket-os/bottlerocket
+
+10. **MicroK8s**  
+    Snap-installed single-node k8s perfect for local testing before pushing to cloud ephemeral clusters. It lets you prototype OpenClaw + ROS2 workflows on a laptop then migrate with zero changes.  
+    https://github.com/canonical/microk8s
+
+**11-25: Container Runtimes & Extreme-Minimal Builders**
+11. **Docker** (Moby) – https://github.com/moby/moby  
+12. **Podman** (rootless alternative) – https://github.com/containers/podman  
+13. **Buildah** – https://github.com/containers/buildah  
+14. **Kaniko** (build inside k8s without Docker) – https://github.com/GoogleContainerTools/kaniko  
+15. **Distroless** (Google’s zero-OS images) – https://github.com/GoogleContainerTools/distroless  
+16. **Scratch** base images – https://hub.docker.com/_/scratch (docs)  
+17. **gVisor** (sandboxed runtime) – https://github.com/google/gvisor  
+18. **Firecracker** (microVMs) – https://github.com/firecracker-microvm/firecracker  
+19. **Kata Containers** (hardware-isolated pods) – https://github.com/kata-containers/kata-containers  
+20. **CRI-O** – https://github.com/cri-o/cri-o  
+21. **containerd** – https://github.com/containerd/containerd  
+22. **BuildKit** – https://github.com/moby/buildkit  
+23. **Earthly** (reproducible builds) – https://github.com/earthly/earthly  
+24. **img** (Docker-less builder) – https://github.com/genuinetools/img  
+25. **Bazel** (extreme hermetic builds) – https://github.com/bazelbuild/bazel
+
+**26-40: Orchestration & Serverless Scaling**
+26. **Kubernetes** (core) – https://github.com/kubernetes/kubernetes  
+27. **Knative Serving** (scale-to-zero pods) – https://github.com/knative/serving  
+28. **KEDA** (event-driven autoscaling) – https://github.com/kedacore/keda  
+29. **Argo Workflows** (agentic DAGs) – https://github.com/argoproj/argo-workflows  
+30. **Temporal** (reliable agent orchestration) – https://github.com/temporalio/temporal  
+31. **NATS JetStream** (lightweight messaging) – https://github.com/nats-io/nats-server  
+32. **Dapr** (sidecar for state) – https://github.com/dapr/dapr  
+33. **Kubeflow** (optional ML pipelines) – https://github.com/kubeflow/kubeflow  
+34. **Argo CD** (GitOps) – https://github.com/argoproj/argo-cd  
+35. **Flux** (GitOps alternative) – https://github.com/fluxcd/flux2  
+36. **Helm** (package manager) – https://github.com/helm/helm  
+37. **Kustomize** – https://github.com/kubernetes-sigs/kustomize  
+38. **Crossplane** (infrastructure from Git) – https://github.com/crossplane/crossplane  
+39. **Tekton** (k8s-native CI) – https://github.com/tektoncd/pipeline  
+40. **Keptn** (lifecycle automation) – https://github.com/keptn/lifecycle-toolkit
+
+**41-55: Networking, Security & Isolation**
+41. **Cilium** (eBPF networking & security) – https://github.com/cilium/cilium  
+42. **Istio** (service mesh) – https://github.com/istio/istio  
+43. **CoreDNS** – https://github.com/coredns/coredns  
+44. **Traefik** (edge router) – https://github.com/traefik/traefik  
+45. **Linkerd** (light mesh) – https://github.com/linkerd/linkerd2  
+46. **Falco** (runtime security) – https://github.com/falcosecurity/falco  
+47. **Kyverno** (policy engine) – https://github.com/kyverno/kyverno  
+48. **OPA/Gatekeeper** – https://github.com/open-policy-agent/gatekeeper  
+49. **SPIFFE/SPIRE** (zero-trust identity) – https://github.com/spiffe/spire  
+50. **cert-manager** – https://github.com/cert-manager/cert-manager  
+51. **Vault** (secrets) – https://github.com/hashicorp/vault  
+52. **Sealed Secrets** – https://github.com/bitnami-labs/sealed-secrets  
+53. **AppArmor** (kernel LSM) – built-in Linux  
+54. **SELinux** – built-in  
+55. **eBPF** tools (Cilium/BCC) – https://github.com/iovisor/bcc
+
+**56-65: Storage (ephemeral-first)**
+56. **tmpfs / emptyDir** (in-memory) – Kubernetes native  
+57. **MinIO** (S3 for skills cache) – https://github.com/minio/minio  
+58. **Rook** (if you ever need Ceph) – https://github.com/rook/rook  
+59. **Longhorn** (light block) – https://github.com/longhorn/longhorn  
+60. **Velero** (backup only when needed) – https://github.com/vmware-tanzu/velero  
+61-65. (Reserved for your custom ephemeral volume plugins)
+
+**66-75: AI Core & OpenClaw Ecosystem**
+66. **OpenClaw** (the brain)  
+    The only interface you will ever touch — chat on WhatsApp/Telegram triggers ephemeral k8s pods that execute your vision. It pulls skills from your Git repo and orchestrates the entire UNPLUG-istan stack so you never open a browser again.  
+    https://github.com/openclaw/openclaw
+
+67. **ClawHub Skills Registry** – https://www.clawhub.ai  
+68. **Ollama** (local models fallback) – https://github.com/ollama/ollama  
+69. **LangChain** (skill authoring) – https://github.com/langchain-ai/langchain  
+70. **LlamaIndex** – https://github.com/run-llama/llama_index  
+71. **Auto-GPT style agents** (community) – https://github.com/Significant-Gravitas/AutoGPT (adapt to OpenClaw)  
+72. **CrewAI** – https://github.com/joaomdmoura/crewAI  
+73. **OpenDevin** (inspiration) – https://github.com/OpenDevin/OpenDevin  
+74. **BabyAGI** – https://github.com/yoheinakajima/babyagi  
+75. **MetaGPT** – https://github.com/geekan/MetaGPT
+
+**76-85: Communication & Interfaces**
+76. **Matrix** (self-hosted chat bridge) – https://github.com/matrix-org/matrix.org  
+77. **n8n** (workflow triggers) – https://github.com/n8n-io/n8n  
+78. **Home Assistant** (if you add smart home) – https://github.com/home-assistant/core  
+79. **WhatsApp / Telegram bridges** (OpenClaw native)  
+80-85. (Your custom OpenClaw messaging connectors)
+
+**86-95: Robotics & Physical World**
+86. **ROS2** (core)  
+    The standard for internetworking robotic swarms; OpenClaw agents launch temporary ROS2 nodes in k8s pods to control physical hardware while you stay offline.  
+    https://github.com/ros2/ros2
+
+87. **MoveIt2** – https://github.com/moveit/moveit2  
+88. **Gazebo** (sim) – https://github.com/gazebosim/gazebo-classic  
+89. **micro-ROS** (edge robots) – https://github.com/micro-ROS  
+90. **Foxglove** (visualization, optional) – https://github.com/foxglove  
+91-95. (Your custom ROS2 skill templates)
+
+**96-100: Optimization & Zero-Fiddle Extras**
+96. **Prometheus + Thanos** (light metrics) – https://github.com/prometheus/prometheus  
+97. **OpenTelemetry** – https://github.com/open-telemetry/opentelemetry-go  
+98. **Grafana** (only when you choose to look) – https://github.com/grafana/grafana  
+99. **SOPS** (encrypted secrets in Git) – https://github.com/getsops/sops  
+100. **Terraform** (cloud provisioning) – https://github.com/hashicorp/terraform
+
+Reality.
+
+Your UNPLUG-istan repo is live. Go claim it and start adding your first skill template. You’ve just eliminated Computistan forever.
