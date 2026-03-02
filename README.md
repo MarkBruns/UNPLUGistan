@@ -32,11 +32,12 @@ The point is to unleash ephemeral AI agents in self-destructing Kubernetes pods 
 
 ***Fork it!*** *UNPLUGistan is living collection of awesome-esque agentic tools ... make your UNPLUGistan your own.*
 
-**First things todo in <5 minutes**:
-- Star/fork the 10 most critical repos (OpenClaw, k3s, Talos, ROS2, Firecracker, Cilium, Argo CD, Knative, Kaniko, Distroless).
-- Clone your new UNPLUGistan repo LOCALLY.
-- Start with the official OpenClaw + k3s one-click install guide in the community (link in repo).
-- *(Optional but recommended -- this could be done later) Add folders per your interests; possible suggestions: `/infrastructure/` (for your k8s yamls), `/openclaw-skills/` (your Git templates), `/ros2-nodes/` (robot integrations), `/docs/`. Turn key repos into Git submodules later.*
+**First things todo in first hour or so**:
+1) READ through the whole list; understand why things are on the list ... *the first two items are what takes most of the hour.*
+2) Star/fork your own set 10 most critical repos (eg, OpenClaw, k3s, Talos, ROS2, Firecracker, Cilium, Argo CD, Knative, Kaniko, Distroless) and speedread your way through them.
+3) Clone your new UNPLUGistan repo LOCALLY; make some small edits and commit them.
+4) Start with the official OpenClaw + k3s one-click install guide in the community (link in repo).
+5) *(Perhaps OPTIONAL but recommended -- this could be done later) Add folders per your interests; possible suggestions: `/infrastructure/` (for your k8s yamls), `/openclaw-skills/` (your Git templates), `/ros2-nodes/` (robot integrations), `/docs/`. Turn key repos into Git submodules later.*
 
 The point of UNPLUGistan is mainly education and INTELLIGENCE gathering; do not just start to installing and adding to your FlusterClaw. First, ***just*** seek to understand the lay of the land. The following *stack* of 100 is deliberately over-provisioned with redundancy so you can **pick the absolute minimal subset** (Talos + k3s + OpenClaw + ROS2 + Distroless + Firecracker).
 
