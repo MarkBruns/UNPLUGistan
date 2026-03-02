@@ -42,9 +42,12 @@ The point is to unleash ephemeral AI agents in self-destructing Kubernetes pods 
 - Start with the official OpenClaw + k3s one-click install guide in the community (link in repo).
 - *(Optional but recommended -- this could be done later) Add folders per your interests; possible suggestions: `/infrastructure/` (for your k8s yamls), `/openclaw-skills/` (your Git templates), `/ros2-nodes/` (robot integrations), `/docs/`. Turn key repos into Git submodules later.*
 
-This stack is deliberately over-provisioned with redundancy so you can pick the absolute minimal subset (Talos + k3s + OpenClaw + ROS2 + Distroless + Firecracker) ... and work toward the ideall of *literally* never think about compute again. You chat → agents do → everything dies → you live in 
+The point of UNPLUGistan is mainly education and INTELLIGENCE gathering; do not just start to installing and adding to your FlusterClaw. First, ***just*** seek to understand the lay of the land. The following *stack* of 100 is deliberately over-provisioned with redundancy so you can **pick the absolute minimal subset** (Talos + k3s + OpenClaw + ROS2 + Distroless + Firecracker).
 
-### 100 Essential Elements of UNPLUG-istan
+Inform, but MINIMALIZE ... work toward the ideal of *literally* NEVER having think about compute again. The FUTURE dream is for you to chat → agents do → everything dies → you live in.  AT FIRST, don't install and set up anything ... just READ and follow communities making the stuff work.
+
+### 100 Elements of UNPLUGistan
+
 Organized by layer; not priority. Each entry = exactly two sentences (why it matters + how it connects) + official learning URL.
 
 **1-10: Base OS & Kernel (the invisible host)**
