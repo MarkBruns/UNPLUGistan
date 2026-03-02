@@ -28,6 +28,10 @@ onlycrabs.ai is the **SOUL.md registry**: publish and share system lore the same
 
 <h1 align="center">UNPLUGistan</h1>
 
+The intent of UNPLUGistan is freedom from oppressive Computistan forever. Chat your goals on any messaging app and OpenClaw unleashes ephemeral AI agents in self-destructing Kubernetes pods that execute silently then vanish—no browsers, no apps, no maintenance.
+
+Powered by Talos Linux, k3s, Firecracker, and ROS2, the stack scales to true zero cost. Your personal Git repo becomes the sole source of truth so technology disappears and real life takes center stage.
+
 ***Fork it!*** *UNPLUGistan is living collection of awesome-esque agentic tools ... make your UNPLUGistan your own.*
 
 **First things todo in <5 minutes**:
