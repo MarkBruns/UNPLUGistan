@@ -2,7 +2,7 @@
   <img src="public/clawd-logo.png" alt="ClawHub" width="120">
 </p>
 
-<h3 align="center">Based on **ClawHub**</h3>
+<h3 align="center">forked from clawhub.ai</h3>
 
 <p align="center">
   <a href="https://github.com/openclaw/clawhub/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/openclaw/clawhub/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
@@ -10,14 +10,10 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
 
-[ClawHub](https://clawhub.ai/) is the **public skill registry for Clawdbot**: publish, version, and search text-based agent skills (a `SKILL.md` plus supporting files).
-It's designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search.
-
-onlycrabs.ai is the **SOUL.md registry**: publish and share system lore the same way you publish skills.
+[clawhub.ai](https://clawhub.ai/) is the **public skill registry for Clawdbot**: publish, version, and search text-based agent skills (a `SKILL.md` plus supporting files). It is minimalist roadmap designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search. It aims to be the **SOUL.md registry**: publish and share system lore the same way you publish skills.
 
 <p align="center">
   <a href="https://clawhub.ai">ClawHub</a> ·
-  <a href="https://onlycrabs.ai">onlycrabs.ai</a> ·
   <a href="VISION.md">Vision</a> ·
   <a href="docs/README.md">Docs</a> ·
   <a href="CONTRIBUTING.md">Contributing</a> ·
