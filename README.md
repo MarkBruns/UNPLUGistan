@@ -33,7 +33,7 @@ The point is to unleash ephemeral AI agents in self-destructing Kubernetes pods 
 ***Fork it!*** *UNPLUGistan is living collection of awesome-esque agentic tools ... make your UNPLUGistan your own.*
 
 **First things todo in first hour or so**:
-1) READ the [list](#100-elements-of-unplugistan); using reading aids like [AskDevin](https://docs.devin.ai/work-with-devin/ask-devin) or [DeepWiki](https://cognition.ai/blog/deepwiki). You will want to understand why elements made [the top 100](#100-elements-of-unplugistan); add things that you think are missing; refactor the [list](#100-elements-of-unplugistan) ... *the first two items are what takes most of the hour, but don't waste too much time on this.*
+1) READ the [list](#100-elements-of-unplugistan) and drill down a bit, typically using reading aids like [AskDevin](https://devin.ai/) or [DeepWiki](https://deepwiki.com/MarkBruns/UNPLUGistan). You will want to understand why elements made [the top 100](#100-elements-of-unplugistan); add things that you think are missing; refactor the [list](#100-elements-of-unplugistan) ... *the first two items are what takes most of the hour, but don't waste too much time on this.*
 2) Star/fork your own set 10 most critical repos (eg, OpenClaw, k3s, Talos, ROS2, Firecracker, Cilium, Argo CD, Knative, Kaniko, Distroless) and speedread your way through them.
 3) Clone your new UNPLUGistan repo LOCALLY; make some small edits and commit them.
 4) Start with the official OpenClaw + k3s one-click install guide in the community (link in repo).
